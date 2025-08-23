@@ -1,4 +1,4 @@
-package com.example.hw3_m3
+package com.example.hw3_m3.data.models
 
 data class OnBoardModel(
     val title: String,

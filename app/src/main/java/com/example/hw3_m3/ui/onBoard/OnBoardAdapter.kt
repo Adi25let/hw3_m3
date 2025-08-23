@@ -1,10 +1,11 @@
-package com.example.hw3_m3
+package com.example.hw3_m3.ui.onBoard
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView.Adapter
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import com.example.hw3_m3.data.models.OnBoardModel
 import com.example.hw3_m3.databinding.ItemOnBoardBinding
 
 class OnBoardAdapter(val onSkip: () -> Unit, val onStart:()-> Unit,): Adapter<OnBoardAdapter.OnBoardViewHolder>() {
@@ -47,7 +48,7 @@ class OnBoardAdapter(val onSkip: () -> Unit, val onStart:()-> Unit,): Adapter<On
         return OnBoardList.size
     }
 
-    inner   class OnBoardViewHolder(private val binding: ItemOnBoardBinding):ViewHolder(binding.root) {
+    inner   class OnBoardViewHolder(private val binding: ItemOnBoardBinding): ViewHolder(binding.root) {
         fun OnBind(model: OnBoardModel) {
             binding.tvTitle.text = model.title
             binding.tvDesc.text = model.desc
