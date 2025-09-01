@@ -1,14 +1,13 @@
-package com.example.hw3_m3.ui.onBoard
+package com.example.hw3_m3.ui.onBoard.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.RecyclerView.Adapter
-import androidx.recyclerview.widget.RecyclerView.ViewHolder
+import androidx.recyclerview.widget.RecyclerView
 import com.example.hw3_m3.data.models.OnBoardModel
 import com.example.hw3_m3.databinding.ItemOnBoardBinding
 
-class OnBoardAdapter(val onSkip: () -> Unit, val onStart:()-> Unit,): Adapter<OnBoardAdapter.OnBoardViewHolder>() {
+class OnBoardAdapter(val onSkip: () -> Unit, val onStart:()-> Unit,): RecyclerView.Adapter<OnBoardAdapter.OnBoardViewHolder>() {
 
     private val OnBoardList = arrayListOf(
         OnBoardModel(
@@ -32,7 +31,9 @@ class OnBoardAdapter(val onSkip: () -> Unit, val onStart:()-> Unit,): Adapter<On
         parent: ViewGroup,
         viewType: Int
     ): OnBoardViewHolder {
-        return OnBoardViewHolder(ItemOnBoardBinding.inflate(LayoutInflater.from(parent.context),parent,false
+        return OnBoardViewHolder(
+            ItemOnBoardBinding.inflate(
+                LayoutInflater.from(parent.context),parent,false
            )
         )
     }
@@ -48,7 +49,7 @@ class OnBoardAdapter(val onSkip: () -> Unit, val onStart:()-> Unit,): Adapter<On
         return OnBoardList.size
     }
 
-    inner   class OnBoardViewHolder(private val binding: ItemOnBoardBinding): ViewHolder(binding.root) {
+    inner   class OnBoardViewHolder(private val binding: ItemOnBoardBinding): RecyclerView.ViewHolder(binding.root) {
         fun OnBind(model: OnBoardModel) {
             binding.tvTitle.text = model.title
             binding.tvDesc.text = model.desc

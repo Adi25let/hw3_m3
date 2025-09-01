@@ -1,6 +1,7 @@
-plugins {
+ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+     id("kotlin-kapt")
 }
 
 android {
@@ -62,4 +63,11 @@ dependencies {
     //CircleInd
     implementation("me.relex:circleindicator:1.3.2")
     implementation("me.relex:circleindicator:2.1.6")
+
+
+    //DAO
+    val roomVersion = "2.7.2"
+    implementation("androidx.room:room-runtime:$roomVersion")
+    kapt("androidx.room:room-compiler:$roomVersion")
+    implementation("androidx.room:room-ktx:$roomVersion")
 }

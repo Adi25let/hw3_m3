@@ -10,6 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.hw3_m3.R
 import com.example.hw3_m3.data.local.Pref
 import com.example.hw3_m3.databinding.FragmentOnBoardBinding
+import com.example.hw3_m3.ui.onBoard.adapter.OnBoardAdapter
 
 
 class OnBoardFragment : Fragment() {
@@ -58,7 +59,6 @@ class OnBoardFragment : Fragment() {
     private fun onStartBoard(){
         val pref = Pref(requireContext())
         pref.setOnBoardShown()
-
         findNavController().navigate(R.id.mainFragment,null, NavOptions.Builder().setPopUpTo(R.id.onBoardFragment,true).build()
         )
     }

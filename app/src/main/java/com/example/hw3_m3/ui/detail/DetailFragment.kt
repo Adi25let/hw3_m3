@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.hw3_m3.App
+import com.example.hw3_m3.data.models.TaskModel
 import com.example.hw3_m3.databinding.FragmentDetailBinding
 
 class DetailFragment : Fragment() {
@@ -22,9 +24,29 @@ private lateinit var binding: FragmentDetailBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.btnNavigateUp.setOnClickListener {
-            findNavController().navigateUp()
+
+        val taskModel: TaskModel? = arguments?.getSerializable("key") as TaskModel?
+        if (taskModel != null){
+            binding.etValue.setText(taskModel.title)
+            binding.etDesc.setText(taskModel.desc)
+            binding.btnSave.setOnClickListener {
+                val model = TaskModel(
+                    uid = taskModel.uid,
+                    title = binding.etValue.text.toString(),
+                    desc = binding.etDesc.text.toString()
+                )
+                App.db.taskDao().updateTask(model)
+                findNavController().navigateUp()
+            }
+        }else{
+            binding.btnSave.setOnClickListener {
+                val model = TaskModel(
+                    title = binding.etValue.text.toString(),
+                    desc = binding.etDesc.text.toString()
+                )
+                App.db.taskDao().updateTask(model)
+                findNavController().navigateUp()
+            }
         }
     }
-
 }

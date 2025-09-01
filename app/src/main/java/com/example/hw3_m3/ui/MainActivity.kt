@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import com.example.hw3_m3.R
+import com.example.hw3_m3.data.local.Pref
 import com.example.hw3_m3.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -15,15 +16,15 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val getOnBoardValue = false
+        val pref = Pref(this)
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host) as NavHostFragment
         val navController = navHostFragment.navController
 
-        if (getOnBoardValue) {
+        if (pref.isOnBoardShown()) {
             navController.navigate(R.id.mainFragment)
-        }else{
+        } else {
             navController.navigate(R.id.onBoardFragment)
         }
 
