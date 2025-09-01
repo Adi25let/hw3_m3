@@ -1,24 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:layout_margin="12dp"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:padding="4dp"
+    android:layout_marginVertical="10dp"
+    android:background="@drawable/item_background"
+    android:orientation="vertical">
 
-    
     <TextView
-        android:id="@+id/tv_title"
-        android:textStyle="bold"
-        android:textSize="32sp"
-        android:text="Title"
+        android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-
-    <TextView
+        android:layout_height="wrap_content"
+        android:text="План на жизнь:"
+        android:textColor="@color/black"
         android:textSize="20sp"
-        android:id="@+id/tv_desc"
-        android:text="Desc"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvDesc"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    
+        android:layout_height="wrap_content"
+        android:layout_marginVertical="6dp"
+        android:text="Посадить сына, вырастить дом, построить дерево. Нужно.."
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/tvDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="31 мая"
+        android:textColor="@color/black"
+        android:textSize="10sp" />
+
+    <TextView
+        android:id="@+id/tvTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="12:45"
+        android:textColor="@color/black"
+        android:textSize="10sp" />
+
 </LinearLayout>

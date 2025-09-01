@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.hw3_m3.App
@@ -46,8 +47,16 @@ class MainFragment : Fragment() {
     }
 
     private fun onLongClick(taskModel: TaskModel) {
-        App.db.taskDao().deleteTask(taskModel)
-        getList()
+        val alerts = AlertDialog.Builder(requireContext())
+        alerts.setTitle("Удалить ?")
+        alerts.setPositiveButton("Да"){dialog, id ->
+            App.db.taskDao().deleteTask(taskModel)
+            getList()
+        }.setNegativeButton("Нет") {dialog, id ->
+
+        }
+            alerts.show()
+            alerts.create()
     }
 
     private fun onClick(taskModel: TaskModel) {

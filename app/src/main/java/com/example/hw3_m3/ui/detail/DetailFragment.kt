@@ -9,6 +9,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.hw3_m3.App
 import com.example.hw3_m3.data.models.TaskModel
 import com.example.hw3_m3.databinding.FragmentDetailBinding
+import java.time.LocalDate
 
 class DetailFragment : Fragment() {
 
@@ -24,7 +25,8 @@ private lateinit var binding: FragmentDetailBinding
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        val currentDate = LocalDate.now()
+        binding.tvDate.text = currentDate.toString()
         val taskModel: TaskModel? = arguments?.getSerializable("key") as TaskModel?
         if (taskModel != null){
             binding.etValue.setText(taskModel.title)
@@ -45,6 +47,7 @@ private lateinit var binding: FragmentDetailBinding
                     desc = binding.etDesc.text.toString()
                 )
                 App.db.taskDao().updateTask(model)
+
                 findNavController().navigateUp()
             }
         }
